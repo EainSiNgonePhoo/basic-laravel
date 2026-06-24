@@ -28,10 +28,10 @@
                     <div class="form-group">
                         <label for="content">Content</label>
                         
-                       <textarea></textarea>
+                       <textarea name="content" id="content" rows="3" class="form-control"></textarea>
 
                     </div>
-                    
+                    <button class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="col-md-3"></div>
