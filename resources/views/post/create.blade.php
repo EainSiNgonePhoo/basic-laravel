@@ -18,7 +18,8 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h5>Create Post</h5>
-                <form action="" method="POST">
+                <form action="{{url('posts')}}" method="POST">
+                 @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
                         <!-- name="title" ပေးတာက databaseနဲ့အလုပ်လုပ်မှာမို့ -->
@@ -27,11 +28,11 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        
-                       <textarea name="content" id="content" rows="3" class="form-control"></textarea>
+                       <textarea name="content" id="content" rows="3" class="form-control" placeholder="Enter the content...."></textarea>
 
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+
+                    <button class="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
             <div class="col-md-3"></div>
