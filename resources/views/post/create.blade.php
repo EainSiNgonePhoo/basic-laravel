@@ -23,13 +23,17 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <!-- name="title" ပေးတာက databaseနဲ့အလုပ်လုပ်မှာမို့ -->
-                        <input type="text" name="title" class="form-control" placeholder="Enter post title">
-
+                        <input type="text" name="title" class="form-control @error('title')is-invalid @enderror" placeholder="Enter post title" value="{{ old('title') }}">
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                       <textarea name="content" id="content" rows="3" class="form-control" placeholder="Enter the content...."></textarea>
-
+                       <textarea name="content" id="content" rows="3" class="form-control @error('content')is-invalid @enderror" placeholder="Enter the content....">{{ old('content')}}</textarea>
+                             @error('content')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                            @enderror
                     </div>
 
                     <button class="btn btn-primary mt-3">Submit</button>
