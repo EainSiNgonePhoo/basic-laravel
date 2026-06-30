@@ -11,7 +11,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $posts = Post::all();
+
+      return view('post.index', compact('posts'));
     }
 
     /**
@@ -41,7 +43,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
         //
     }
@@ -49,24 +51,36 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+       $post= Post::find($id);
+        return view('post.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
+
+     $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+      Post::find($id)->update([
+        'title' => $request->title,
+        'content' =>$request->content
+      ]);
+      return redirect('posts')->with('successAlert','You have successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+      Post::find($id)->delete();
+      return redirect('posts')->with('successAlert','successfully deleted');
     }
 }
